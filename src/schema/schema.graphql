@@ -1,0 +1,33 @@
+type Cv {
+  id: Int!
+  name: String!
+  age: Int
+  job: String!
+  user: User!
+  skills: [Skill]
+}
+
+type User {
+  id: Int!
+  name: String!
+  email: String
+  role: Role
+  cvs: [Cv]
+}
+
+type Skill {
+  id: Int!
+  Description: String!
+  cv: [Cv]
+}
+enum Role {
+  ADMIN
+  USER
+}
+
+type Query {
+  getCvs: [Cv]
+  getCvsById(id: Int): Cv
+  getSkillsByCvId(id: Int): [Skill]!
+  Cv:User!
+}
