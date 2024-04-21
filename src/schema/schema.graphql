@@ -1,5 +1,5 @@
 type Cv {
-  id: Int!
+  id: ID!
   name: String!
   age: Int
   job: String!
@@ -8,16 +8,16 @@ type Cv {
 }
 
 type User {
-  id: Int!
+  id: ID!
   name: String!
   email: String
   role: Role
-  cvs: [Cv]
+  cv: [Cv]
 }
 
 type Skill {
-  id: Int!
-  Description: String!
+  id: ID!
+  description: String!
   cv: [Cv]
 }
 enum Role {
@@ -28,6 +28,29 @@ enum Role {
 type Query {
   getCvs: [Cv]
   getCvsById(id: Int): Cv
-  getSkillsByCvId(id: Int): [Skill]!
-  Cv:User!
+}
+type Mutation {
+  addCv(cvInput: CvAddInput!): Cv!
+  updateCv(id: Int!, updatecvInput: UpdateCvInput!): Cv!
+  deleteCv(id: Int!): Cv!
+}
+input CvAddInput {
+  name: String!
+  age: Int!
+  job: String!
+  userId: Int!
+  skills: [Int]
+}
+input UpdateCvInput {
+  name: String
+  age: Int
+  job: String
+  userId: Int
+  skills: [Int]
+}
+
+type Subscription{
+   CvAdded:Cv!
+   cvDeleted:Cv!
+   cvUpdated:Cv!
 }
