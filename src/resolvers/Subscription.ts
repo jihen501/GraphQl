@@ -1,6 +1,6 @@
 
 export const Subscription={
-    CvAdded:{
+   CvAdded:{
         subscribe:(parent,args,{Db,pubSub})=>pubSub.subscribe("Cv"),
         resolve: ( cv) => { return cv;},
     },

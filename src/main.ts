@@ -1,13 +1,12 @@
-import { createPubSub, createSchema, createYoga } from "graphql-yoga";
+/*import { createPubSub, createSchema, createYoga } from "graphql-yoga";
 import { createServer } from "http";
-import { Cv, Query } from "./resolvers/Query";
-import { Db } from "./data";
+import {  Query } from "./resolvers/Query";
+import { createContext } from './context'
 import { Mutation } from "./resolvers/Mutation";
 import { Subscription } from "./resolvers/Subscription";
 
 const fs = require("fs");
 const path = require("path");
-const db = new Db();
 const pubSub=createPubSub();
 export const schema = createSchema({
     typeDefs: fs.readFileSync(
@@ -15,12 +14,11 @@ export const schema = createSchema({
         "utf-8"
     ),
     resolvers: {
-       Query,Cv,Mutation,Subscription,
+       Query,Mutation,Subscription,
     }
 });
-
 function main() {
-    const yoga = createYoga({ schema ,context: {db,pubSub} }); ;
+    const yoga = createYoga({context:createContext}); ;
     const server = createServer(yoga);
     server.listen(4000, () => {
       console.info("Server is running on http://localhost:4000/graphql");
@@ -28,3 +26,18 @@ function main() {
   }
   
   main();
+  */
+  import { createServer } from 'http'
+  import { createYoga } from 'graphql-yoga'
+  import { createContext } from './context'
+  import { schema } from './schema/schema'
+   
+  function main() {
+    const yoga = createYoga({ schema, context: createContext })
+    const server = createServer(yoga)
+    server.listen(4000, () => {
+      console.info('Server is running on http://localhost:4000/graphql')
+    })
+  }
+   
+  main() 

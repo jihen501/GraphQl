@@ -1,5 +1,5 @@
 export const Mutation = {
-  addCv: (parent, { cvInput }, context, infos) => {
+  /*addCv: (parent, { cvInput }, context, infos) => {
     const Db = context.db;
     const { skills, ...restOfCvInput } = cvInput;
     if (!Db.UserList.some((user) => user.id === cvInput.userId)) {
@@ -95,5 +95,5 @@ export const Mutation = {
       //Ici les skills de ce cv ne sont pas affichées 
       return cv;
     }
-  },
+  },*/
 };

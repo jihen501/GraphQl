@@ -1,17 +1,20 @@
-import { GraphQLError } from "graphql";
+import { GraphQLContext } from "../context";
 
 export const Query = {
-  getCvs: (parent: any, args: any, context: any, info: any) => {
-    return context.db.CvList;
+  getCvs: (parent: any, args: any, context: GraphQLContext, info: any) => {
+    return context.prisma.cv.findMany();
   },
+};
 
-  getCvsById: (parent: any, args: any, context: any, info: any) => {
+
+  /*getCvsById: (parent: any, args: any, context: any, info: any) => {
     const cv = context.db.CvList.find((cv: any) => cv.id === args.id);
     if (cv) return cv;
     else throw new GraphQLError(`Element with id '${args.id}' not found.`);
   },
-};
-export const Cv = {
+};*/
+
+/*export const Cv = {
   user: (parent: any, args: any, context: any, info: any) => {
     const user = context.db.UserList.find(
       (user: any) => user.id === parent.userId
@@ -25,6 +28,6 @@ export const Cv = {
     return skills;
   }
 };
- 
+ */
 
 
