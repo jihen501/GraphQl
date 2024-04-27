@@ -13,15 +13,10 @@ export const Mutation = {
     ) {
       throw new Error("One or more skill IDs are not valid.");
     } else {
-      console.log("creation de cv");
-      console.log(Db.CvList[Db.CvList.length - 1]);
-      console.log(Db.CvList[Db.CvList.length - 1].id);
-
       const newCv = {
         id: Db.CvList[Db.CvList.length - 1].id + 1,
         ...restOfCvInput,
       };
-      console.log(newCv);
       if (skills) {
         skills.forEach((skillId) => {
           const newCvSkillData = {
