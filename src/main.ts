@@ -2,7 +2,7 @@
   import { createServer } from 'http'
   import { createPubSub, createYoga } from 'graphql-yoga'
   import { schema } from './schema/schema'
-import { PrismaClient } from '@prisma/client';
+  import { PrismaClient } from '@prisma/client';
   const pubSub=createPubSub();
   const prisma=new PrismaClient();
   function main() {
