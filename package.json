@@ -1,6 +1,7 @@
 {
   "dependencies": {
     "@graphql-tools/schema": "10.0.3",
+    "@prisma/client": "^5.13.0",
     "@types/node": "^20.12.7",
     "cross-env": "^7.0.3",
     "graphql": "16.8.1",
@@ -16,14 +17,14 @@
   "main": "index.js",
   "scripts": {
     "dev": "cross-env NODE_ENV=development ts-node-dev --exit-child --respawn src/main.ts",
-    "start": "ts-node src/main.ts"
+    "start": "ts-node src/main.ts",
+    "postinstall": "prisma generate"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "description": "",
   "devDependencies": {
-    "@prisma/client": "^5.13.0",
-    "prisma": "5.13.0"
+    "prisma": "^5.13.0"
   }
 }
